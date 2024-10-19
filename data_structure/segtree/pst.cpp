@@ -1,9 +1,3 @@
-#include <algorithm>
-#include <cstdio>
-#include <vector>
-
-using namespace std;
-
 const int M = 524288;
 
 struct node{
@@ -69,7 +63,7 @@ int Query(node *i,node *j,int s,int e,int k){
 // 1 x: 배열 끝에 x 추가
 // 2 L R x: A[L...R] 중 x 이하 원소 개수
 // 3 L R x: A[L...R] 중 x번째로 작은 원소
-int main(){
+void query_example(){
 	tree[0]=new node();
 	init(tree[0],0,M-1);
 	int Q;

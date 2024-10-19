@@ -1,4 +1,6 @@
 /**
+ * https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/FenwickTree2d.h
+ * 
  * Computes sums a[i,j] for all i<I, j<J, and increases single elements a[i,j].
  * Requires that the elements to be updated are known in advance (call fakeUpdate() before init()).
  * O(log^2 N)
