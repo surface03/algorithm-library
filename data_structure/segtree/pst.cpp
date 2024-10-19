@@ -1,5 +1,5 @@
 /**
- * Persistent Segment Tree
+ * Persistent Segment Tree(1-based)
  * 
  * 배열 끝에 원소 삽입
  * 구간에서 k 이하 원소 개수
