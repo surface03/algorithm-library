@@ -1,10 +1,6 @@
 /**
- * HLD
- * Original Source: https://justicehui.github.io/hard-algorithm/2020/01/24/hld/
- * Modified code style
-*/
-
-/**
+ * Heavy Light Decomposition
+ * 
  * sz[i] = i를 루트로 하는 서브트리의 크기
  * dep[i] = i의 깊이
  * par[i] = i의 부모 정점
@@ -15,6 +11,9 @@
  * 루트 정점은 기본적으로 1번
  * 쿼리 및 업데이트는 교환법칙이 성립해야 한다.
  * 부모로 가는 간선이 입력으로 들어오지 않는다면 dfs0 삭제 가능
+ * 
+ * 
+ * Original Source: https://justicehui.github.io/hard-algorithm/2020/01/24/hld/
 */
 
 const int MAXN = 500010;
@@ -65,37 +64,37 @@ void init_hld(int _N){
 }
 
 // 경로 a~b에 업데이트
-void upd_path(int a, int b, ui gop, ui pl){
-    while(top[a] != top[b]){
-        if(dep[top[a]] < dep[top[b]]) swap(a, b);
-        int st=top[a];
-        seg.upd(in[st], in[a], gop, pl);
-        a=par[st];
-    }
-    if(dep[a] > dep[b]) swap(a, b);
-    seg.upd(in[a], in[b], gop, pl);
+void upd_path(int a, int b, ll val){
+	while(top[a] != top[b]){
+		if(dep[top[a]] < dep[top[b]]) swap(a, b);
+		int st=top[a];
+		seg.upd(in[st], in[a], val);
+		a=par[st];
+	}
+	if(dep[a] > dep[b]) swap(a, b);
+	seg.upd(in[a], in[b], val);
 }
 
 // a를 루트로 가지는 서브트리 업데이트
-void upd_subtree(int a, ui gop, ui pl){
-	seg.upd(in[a],out[a],gop,pl);
+void upd_subtree(int a, ll val){
+	seg.upd(in[a],out[a],val);
 }
 
 // 경로 a~b의 값 구하기
-ui query_path(int a,int b){
-	ui ret=0;
-    while(top[a] != top[b]){
-        if(dep[top[a]] < dep[top[b]]) swap(a, b);
-        int st=top[a];
-        ret+=seg.query(in[st], in[a]);
-        a=par[st];
-    }
-    if(dep[a] > dep[b]) swap(a, b);
-    ret+=seg.query(in[a], in[b]);
-    return ret;
+ll query_path(int a,int b){
+	ll ret=0;
+	while(top[a] != top[b]){
+		if(dep[top[a]] < dep[top[b]]) swap(a, b);
+		int st=top[a];
+		ret+=seg.query(in[st], in[a]);
+		a=par[st];
+	}
+	if(dep[a] > dep[b]) swap(a, b);
+	ret+=seg.query(in[a], in[b]);
+	return ret;
 }
 
 // a를 루트로 가지는 서브트리 값 구하기
-ui query_subtree(int a){
+ll query_subtree(int a){
 	return seg.query(in[a],out[a]);
 }
