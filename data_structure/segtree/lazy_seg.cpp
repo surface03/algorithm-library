@@ -16,8 +16,8 @@ struct LazySeg{
 
 	LazySeg(){}
 
-	LazySeg(int N){
-		this->N = N;
+	LazySeg(int _N){
+		N = _N;
 
 		for(int i=0;i<=4*N;i++){
 			lazy[i][0]=1,lazy[i][1]=0;
@@ -27,15 +27,15 @@ struct LazySeg{
 		a.clear();
 	}
 
-	LazySeg(int N, vector<ll> a){
-		this->N = N;
+	LazySeg(int _N, vector<ll> _a){
+		N = _N;
 
 		for(int i=0;i<=4*N;i++){
 			lazy[i][0]=1,lazy[i][1]=0;
 			tree[i]=0;
 		}
 
-		this->a = a;
+		a = _a;
 		build(1,1,N);
 	}
 
