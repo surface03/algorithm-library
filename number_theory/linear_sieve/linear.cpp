@@ -17,7 +17,7 @@ vector<int> prime;
 bool not_prime[MAXN + 10];
 ll phi[MAXN + 10];
 
-void sieve () {
+void linear_sieve() {
 	phi[1] = 1;
 	for (int i = 2; i <= MAXN; ++i) {
 		if (!not_prime[i]) {
