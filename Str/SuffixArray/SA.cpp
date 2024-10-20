@@ -11,6 +11,7 @@
  * Changed it to fit my coding style
  */
 
+
 struct SuffixArray {
 	string S;
 	int N;
