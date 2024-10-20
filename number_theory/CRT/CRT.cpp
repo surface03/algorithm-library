@@ -4,11 +4,9 @@
 // I changed it to match my coding style.
 
 
-/*
-ext gcd
-returns {g, x, y} that a * x + b * y = g = gcd(a,b)
-*/
 
+
+// returns {g, x, y} that a * x + b * y = g = gcd(a,b)
 struct tll{ll g, x, y;};
 tll ext_gcd(ll a, ll b) { // works when a<0 or b<0
     if(!b) return tll{a, 1, 0};
