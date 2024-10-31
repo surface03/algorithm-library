@@ -28,6 +28,8 @@ struct DirectedEulerTrail{
     vector<vector<int>> g;
     vector<int> in, out, path;
 
+    DirectedEulerTrail() = default;
+
     DirectedEulerTrail(int _N, vector<pair<int,int>> _E){
         E = _E;
         N = _N;
@@ -115,6 +117,8 @@ struct UnDirectedEulerTrail{
 
     vector<vector<pair<int,int>>> g;
     vector<int> deg, use, path;
+
+    UnDirectedEulerTrail() = default;
 
     UnDirectedEulerTrail(int _N, vector<pair<int,int>> _E){
         E = _E;
