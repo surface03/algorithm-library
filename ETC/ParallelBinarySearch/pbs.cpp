@@ -4,9 +4,9 @@ struct Info{
 		fr=re=mid=0;
 		ans=-1;
 	}
-}info[300010];
+}info[MAXN];
 
-vector<int> qs[MAXN]
+vector<int> qs[M];
 
 void process(){
 	for(int i=1;i<=Q;i++){
