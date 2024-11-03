@@ -20,7 +20,7 @@ void process(){
 		for(int i=0;i<M+10;i++)mid[i].clear();
 
 		bool lef=false;
-		for(int i=1;i<=N;i++){
+		for(int i=1;i<=Q;i++){
 			if(info[i].fr>info[i].re)continue;
 			lef=true;
 			mid[(info[i].fr+info[i].re)/2].pb(i);
