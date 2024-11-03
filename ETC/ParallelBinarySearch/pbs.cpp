@@ -14,12 +14,16 @@ void process(){
 		// info[i].re=M;
 	}
 
+	vector<int> mid[M+10];
+
 	while(1){
+		for(int i=0;i<M+10;i++)mid[i].clear();
+
 		bool lef=false;
 		for(int i=1;i<=N;i++){
 			if(info[i].fr>info[i].re)continue;
 			lef=true;
-			qs[(info[i].fr+info[i].re)/2].pb(i);
+			mid[(info[i].fr+info[i].re)/2].pb(i);
 		}
 		if(!lef)break;
 	}
