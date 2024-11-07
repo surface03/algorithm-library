@@ -25,7 +25,7 @@
  * If Ax = b has no solution, R == -1.
  * return vector c, basis[i] is size M vector.
  * Ax = b <=> x = c + k1*basis[0] + k2*basis[1] + ... + kR*basis[R-1] for any ki
- * Time Complexity: O(NM * min(N,M)) or O(NM * sqrt(NM))
+ * Time Complexity: O(NM * min(N,M)) or O(NM * sqrt(NM)) if basis part deleted, else O(NM^2)
  * 
  * 
  * Original Code: https://judge.yosupo.jp/submission/202930
