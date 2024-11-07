@@ -1,3 +1,38 @@
+/**
+ * Gaussian Elimination
+ * 
+ * Gets RREF, rank, Determinant, Inverse matrix
+ * Solves linear system
+ * 
+ * If typename T is integer, all values are considered with MOD.
+ * If typename T is floating-point type, comparisons with zero uses eps(=1e-9)
+ * If typename T is user-defined type, the operators +, -, *, /, and type casting from int to T must be defined.
+ * 
+ * Can Modify IsZero, Add, Sub, Mul, Div if necessary.
+ * 
+ * 
+ * Gaussian_Elimination(a):
+ * Input a is N*M matrix.
+ * returns {rref, rank, det, inv} of matrix a.
+ * if do_inv is false, only calculates rref, rank.
+ * Time Complexity: O(NM * min(N,M)) or O(NM * sqrt(NM))
+ * 
+ * 
+ * solve_linear_system(A, b):
+ * Input A is N*M matrix, b is vector with size M.
+ * Solves Ax = b.
+ * returns {R, c, {basis[0], basis[1], ..., basis[R-1]}}.
+ * If Ax = b has no solution, R == -1.
+ * return vector c, basis[i] is size M vector.
+ * Ax = b <=> x = c + k1*basis[0] + k2*basis[1] + ... + kR*basis[R-1] for any ki
+ * Time Complexity: O(NM * min(N,M)) or O(NM * sqrt(NM))
+ * 
+ * 
+ * Original Code: https://judge.yosupo.jp/submission/202930
+ * Modified to support user-defined typename T
+ */
+
+
 template <typename T>
 inline bool IsZero(T x) {
 	if constexpr (is_floating_point_v<T>) return std::abs(x) < 1e-9;
@@ -18,7 +53,7 @@ template <typename T>
 inline T Sub(T a, T b) {
 	if constexpr (is_integral_v<T>) {
 		T res = a - b;
-		if (res < 0) res += MOD;
+		if (res < T(0)) res += MOD;
 		return res;
 	}
 	else return a - b;
