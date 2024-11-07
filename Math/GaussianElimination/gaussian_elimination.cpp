@@ -19,7 +19,7 @@
  * 
  * 
  * solve_linear_system(A, b):
- * Input A is N*M matrix, b is vector with size M.
+ * Input A is N*M matrix, b is vector with size N.
  * Solves Ax = b.
  * returns {R, c, {basis[0], basis[1], ..., basis[R-1]}}.
  * If Ax = b has no solution, R == -1.
