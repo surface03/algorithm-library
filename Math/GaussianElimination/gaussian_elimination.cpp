@@ -171,8 +171,8 @@ tuple<int, vector<T>, vector<vector<T>>> solve_linear_system(vector<vector<T>> A
 	}
 
 	vector<int> cols;
+	int piv_col = 0;
 	for (int i = 0; i < n; i++) {
-		int piv_col = 0;
 		while (piv_col < m && IsZero(rref[i][piv_col])) piv_col++;
 		if (piv_col == m) break;
 		cols.push_back(piv_col);
@@ -180,7 +180,7 @@ tuple<int, vector<T>, vector<vector<T>>> solve_linear_system(vector<vector<T>> A
 
 	// Compute particular solution
 	vector<T> sol(m, T(0));
-	for (int i = 0; i < SZ(cols); i++) sol[cols[i]] = Div(rref[i][m], rref[i][cols[i]]);
+	for (int i = 0; i < SZ(cols); i++) sol[cols[i]] = rref[i][m];
 
 	// Compute basis
 	vector<vector<T>> basis;
@@ -189,7 +189,7 @@ tuple<int, vector<T>, vector<vector<T>>> solve_linear_system(vector<vector<T>> A
 
 		vector<T> bs(m, T(0));
 		bs[i] = T(1);
-		for(int j = 0; j < SZ(cols); j++) bs[cols[j]] = Sub(T(0), Div(rref[j][i], rref[j][cols[j]]));
+		for(int j = 0; j < SZ(cols); j++) bs[cols[j]] = Sub(T(0), rref[j][i]);
 		basis.push_back(bs);
 	}
 
