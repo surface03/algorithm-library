@@ -118,10 +118,9 @@ tuple<vector<vector<T>>, int, T, vector<vector<T>>> Gaussian_Elimination(vector<
 				det = T(0);
 				continue;
 			}
-			for (int k = 0; k < m; k++) {
-				a[rank][k] = Add(a[rank][k], a[idx][k]);
-				if constexpr (do_inv) out[rank][k] = Add(out[rank][k], out[idx][k]);
-			}
+			swap(a[rank], a[idx]);
+			if constexpr (do_inv) swap(out[rank], out[idx]);
+			det = Sub(T(0), det);
 		}
 		det = Mul(det, a[rank][i]);
 		T coeff = Div(T(1), a[rank][i]);
@@ -184,8 +183,12 @@ tuple<int, vector<T>, vector<vector<T>>> solve_linear_system(vector<vector<T>> A
 
 	// Compute basis
 	vector<vector<T>> basis;
+	int ci = 0;
 	for (int i = 0; i < m; i++) {
-		if (binary_search(all(cols), i)) continue;
+		if(ci < SZ(cols) && cols[ci] == i) {
+			ci++;
+			continue;
+		}
 
 		vector<T> bs(m, T(0));
 		bs[i] = T(1);
