@@ -100,6 +100,7 @@ struct comb {
 	std::vector<Z> _invfac = {1};
 	std::vector<Z> _inv = {0};
 	void init(int m) {
+		if constexpr (P < 100'000'000) if(m >= P) m = P - 1;
 		if (m <= n) return;
 		_fac.resize(m + 1);
 		_invfac.resize(m + 1);
