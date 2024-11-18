@@ -123,7 +123,7 @@ struct BipartiteMatching{
 		for(int i=1;i<=N;i++) if(A[i] <= 0) dfs2(i, 0);
 		vector<pii> ans;
 		for(int i=1;i<=N;i++) if(!chkA[i]) ans.emplace_back(i, 0);
-		for(int i=1;i<=M;i++) if(chkB[i]) ans.emplace_back(1, i);
+		for(int i=1;i<=M;i++) if(chkB[i]) ans.emplace_back(i, 1);
 		return ans;
 	}
 	
