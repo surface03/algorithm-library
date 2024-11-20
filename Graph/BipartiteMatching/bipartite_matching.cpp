@@ -90,6 +90,8 @@ struct BipartiteMatching{
 	}
 
 	void find_match(int x, int b){
+		if(b==0 && A[x] > 0) return;
+		if(b==1 && B[x] > 0) return;
 		++pv;
 		if(dfs(x, b)) ++max_match;
 	}
